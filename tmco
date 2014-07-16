@@ -1,0 +1,13 @@
+#!/bin/bash
+tmux has-session -t coast
+if [ $? != 0 ]
+then
+
+tmux new-session -s coast -n local -d 
+tmux new-window -n lb3 -t coast 'ssh gclark@lb3.nn4m.net -p2020'
+tmux new-window -n lb4 -t coast 'ssh gclark@lb4.nn4m.net -p2020'
+tmux new-window -n vm3 -t coast 'ssh gclark@vm3.nn4m.net -p2020'
+tmux new-window -n vm4 -t coast 'ssh gclark@vm4.nn4m.net -p2020'
+fi
+tmux attach -t coast
+

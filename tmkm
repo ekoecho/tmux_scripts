@@ -1,0 +1,13 @@
+#!/bin/bash
+tmux has-session -t karenmillen
+if [ $? != 0 ]
+then
+
+tmux new-session -s karenmillen -n local -d 
+tmux new-window -n lb3 -t karenmillen 'ssh gclark@lb3.nn4m.net -p2020'
+tmux new-window -n lb4 -t karenmillen 'ssh gclark@lb4.nn4m.net -p2020'
+tmux new-window -n vm3 -t karenmillen 'ssh gclark@vm3.nn4m.net -p2020'
+tmux new-window -n vm4 -t karenmillen 'ssh gclark@vm4.nn4m.net -p2020'
+fi
+tmux attach -t karenmillen
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+tmux has-session -t mothercare
+if [ $? != 0 ]
+then
+
+tmux new-session -s mothercare -n local -d 
+tmux new-window -n lb3 -t mothercare 'ssh gclark@lb3.nn4m.net -p2020'
+tmux new-window -n lb4 -t mothercare 'ssh gclark@lb4.nn4m.net -p2020'
+tmux new-window -n vm7 -t mothercare 'ssh gclark@vm7.nn4m.net -p2020'
+tmux new-window -n vm8 -t mothercare 'ssh gclark@vm8.nn4m.net -p2020'
+fi
+tmux attach -t mothercare
+

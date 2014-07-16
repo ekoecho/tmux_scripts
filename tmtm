@@ -1,0 +1,12 @@
+#!/bin/bash
+tmux has-session -t tmux_config
+if [ $? != 0 ]
+then
+
+tmux new-session -s tmux_config -n local -d 
+tmux new-window -n tmux_scripts -t tmux_config 
+tmux send-keys "cd ~/.tmux_scripts" C-m
+tmux send-keys "ls" C-m
+fi
+tmux attach -t tmux_config
+

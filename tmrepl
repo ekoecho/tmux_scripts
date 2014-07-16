@@ -1,0 +1,11 @@
+#!/bin/bash
+tmux has-session -t repltest
+if [ $? != 0 ]
+then
+
+tmux new-session -s repltest -n local -d 
+tmux new-window -n repl1 -t repltest 'ssh gclark@repl1'
+tmux new-window -n repl2 -t repltest 'ssh gclark@repl2'
+fi
+tmux attach -t repltest
+

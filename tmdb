@@ -1,0 +1,13 @@
+#!/bin/bash
+tmux has-session -t debenhams
+if [ $? != 0 ]
+then
+
+tmux new-session -s debenhams -n local -d 
+tmux new-window -n lb3 -t debenhams 'ssh gclark@lb3.nn4m.net -p2020'
+tmux new-window -n lb4 -t debenhams 'ssh gclark@lb4.nn4m.net -p2020'
+tmux new-window -n vm5 -t debenhams 'ssh gclark@vm5.nn4m.net -p2020'
+tmux new-window -n vm6 -t debenhams 'ssh gclark@vm6.nn4m.net -p2020'
+fi
+tmux attach -t debenhams
+
